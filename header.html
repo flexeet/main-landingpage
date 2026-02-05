@@ -1,0 +1,220 @@
+<style>
+/* ==========================================
+   HEADER GLASSMORPHISM EFFECT
+   ========================================== */
+:root {
+    --header-transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --glass-bg: rgba(240, 242, 245, 0.099); /* Lebih transparan */
+    --glass-border: rgba(200, 202, 205, 0.382);
+    --shadow-color: rgba(0, 0, 0, 0.036);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--header-transition);
+
+    /* Pointer events: area kosong bisa ditembus klik */
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* State Awal: Lebar penuh, transparan total */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid transparent;
+    border-radius: 16px;
+
+    /* Re-enable klik untuk isi header */
+    pointer-events: auto;
+    transition: var(--header-transition);
+}
+
+/* ==========================================
+   SCROLLED STATE - FLOATING PILL EFFECT
+   ========================================== */
+.header.scrolled {
+    padding-top: 20px;
+}
+
+.header.scrolled .header-container {
+    /* Mengecil jadi bentuk pil/stick melayang */
+    width: 90% !important;
+    max-width: 1000px !important;
+    padding: 8px 30px !important; /* Lebih pipih - padding vertikal dikurangi */
+
+    /* EFEK KACA (GLASSMORPHISM) - Lebih transparan */
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+
+    /* Border dengan warna abu-abu */
+    border: 1.5px solid var(--glass-border) !important;
+
+    /* Bentuk Lonjong Pipih */
+    border-radius: 100px !important;
+
+    /* Shadow lebih terlihat untuk efek melayang */
+    box-shadow:
+        0 8px 32px 0 var(--shadow-color),
+        0 4px 12px 0 rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+
+    /* Transform untuk efek smooth */
+    transform: translateY(0);
+}
+
+/* ==========================================
+   LOGO
+   ========================================== */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-image {
+    height: 45px;
+    width: auto;
+    transition: var(--header-transition);
+    /* Bayangan abu di belakang logo */
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.719));
+}
+
+.header.scrolled .logo-image {
+    height: 32px; /* Logo mengecil saat scroll - lebih kecil untuk pill pipih */
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2)); /* Bayangan lebih kuat saat scroll */
+}
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background: rgba(84, 117, 229, 0.08);
+}
+
+/* ==========================================
+   CTA BUTTON
+   ========================================== */
+.btn-cta {
+    margin-left: 12px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    background: var(--primary);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(84, 117, 229, 0.3);
+}
+
+.btn-cta:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(84, 117, 229, 0.4);
+}
+
+/* ==========================================
+   MOBILE TOGGLE
+   ========================================== */
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 8px;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .header.scrolled .header-container {
+        width: 95%;
+        padding: 6px 20px; /* Mobile juga lebih pipih */
+    }
+
+    .logo-image {
+        height: 40px;
+    }
+
+    .header.scrolled .logo-image {
+        height: 28px; /* Logo lebih kecil di mobile */
+    }
+}
+</style>
+
+<!-- ==========================================
+     HEADER COMPONENT
+     ========================================== -->
+<header class="header" id="mainHeader">
+    <div class="header-container">
+
+        <a href="#" class="logo">
+            <img src="https://flxr2.com/Flexeet/Logo%20Flexeet.png" alt="Flexeet Logo" class="logo-image">
+        </a>
+
+        <nav class="nav">
+            <a href="#problem" class="nav-link">Masalah</a>
+            <a href="#solution" class="nav-link">Solusi</a>
+            <a href="#products" class="nav-link">Produk</a>
+            <a href="#about" class="nav-link">Tentang</a>
+            <a href="#cta" class="btn-cta">Konsultasi</a>
+        </nav>
+
+        <button class="mobile-toggle" id="mobileToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+</header>
+

@@ -1,0 +1,190 @@
+<section class="section section-alt" id="team">
+    <div class="container">
+        <div class="text-center reveal">
+            <span class="badge">
+                <i data-lucide="users" width="16" height="16"></i>
+                Our Team
+            </span>
+            <h2 style="margin-top: 20px; margin-bottom: 16px;">Founders</h2>
+            <p class="lead" style="max-width: 600px; margin: 0 auto;">Meet the team behind Flexeet</p>
+        </div>
+
+        <div class="team-grid">
+            <!-- Aji Wanda Card with 3D Effect -->
+            <div class="team-card team-card-3d" data-delay="0">
+                <div class="team-avatar-photo">
+                    <img src="https://flxr2.com/Flexeet/Aji.png" alt="Aji Wanda" />
+                    <div class="avatar-ring"></div>
+                </div>
+                <h3>Aji Wanda</h3>
+                <span class="team-role">Founder & CEO — The Architect</span>
+                <p class="team-tagline">"10 Tahun Membangun, Sekarang Membagikan"</p>
+                <p class="team-bio">Alumni Politeknik Astra dengan DNA manufacturing Jepang. 10+ tahun membangun Hijacket dari nol sampai skala nasional. Speaker di Cekat Innov '25 bersama Meta dan Microsoft. Percaya bahwa logic mengalahkan magic.</p>
+                <div class="team-credentials">
+                    <span><i data-lucide="graduation-cap" width="12" height="12"></i> Politeknik Astra</span>
+                    <span><i data-lucide="building" width="12" height="12"></i> Founder Hijacket</span>
+                    <span><i data-lucide="mic" width="12" height="12"></i> Speaker Cekat Innov '25</span>
+                    <span><i data-lucide="star" width="12" height="12"></i> Top-tier n8n Creator</span>
+                </div>
+            </div>
+
+            <!-- Zainal Arifin Card with 3D Effect -->
+            <div class="team-card team-card-3d" data-delay="150">
+                <div class="team-avatar-photo">
+                    <img src="https://flxr2.com/Flexeet/Zain.png" alt="Zainal Arifin" />
+                    <div class="avatar-ring"></div>
+                </div>
+                <h3>Zainal Arifin</h3>
+                <span class="team-role">Co-Founder & CMO — The Amplifier</span>
+                <p class="team-tagline">"Membawa Solusi ke Jutaan UMKM"</p>
+                <p class="team-bio">Ujung tombak penetrasi pasar Flexeet. Fokus mendominasi mindshare publik dan membuka akses bagi ribuan UMKM untuk transformasi digital yang terjangkau.</p>
+                <div class="team-credentials">
+                    <span><i data-lucide="smartphone" width="12" height="12"></i> Social Media Expert</span>
+                    <span><i data-lucide="target" width="12" height="12"></i> Mass Market Specialist</span>
+                    <span><i data-lucide="trending-up" width="12" height="12"></i> Content Strategy Lead</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced 3D Card Styles -->
+<style>
+    /* 3D Effect Team Cards */
+    .team-card-3d {
+        position: relative;
+        transform-style: preserve-3d;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Enhanced shadows for 3D depth */
+        box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.08),
+            0 4px 12px rgba(0, 0, 0, 0.05),
+            0 16px 32px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Raised 3D effect on hover */
+    .team-card-3d:hover {
+        transform: translateY(-12px) translateZ(20px) rotateX(2deg);
+        box-shadow:
+            0 8px 16px rgba(0, 0, 0, 0.12),
+            0 16px 32px rgba(0, 0, 0, 0.08),
+            0 24px 48px rgba(84, 117, 229, 0.15);
+    }
+
+    /* 3D tilt effect on mouse move (subtle) */
+    .team-card-3d::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(84, 117, 229, 0.03) 0%,
+            transparent 50%,
+            rgba(84, 117, 229, 0.03) 100%
+        );
+        border-radius: var(--radius-xl);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .team-card-3d:hover::before {
+        opacity: 1;
+    }
+
+    /* Avatar with Photo - Enhanced 3D Style */
+    .team-avatar-photo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 24px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .team-avatar-photo img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #ffffff;
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.1),
+            0 8px 24px rgba(84, 117, 229, 0.2),
+            inset 0 2px 4px rgba(255, 255, 255, 0.5);
+        position: relative;
+        z-index: 2;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Animated ring around avatar */
+    .avatar-ring {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #5475E5, #764ba2, #5475E5);
+        background-size: 200% 200%;
+        opacity: 0;
+        z-index: 1;
+        animation: rotate-gradient 3s linear infinite;
+        transition: opacity 0.3s ease;
+    }
+
+    @keyframes rotate-gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .team-card-3d:hover .avatar-ring {
+        opacity: 0.6;
+    }
+
+    .team-card-3d:hover .team-avatar-photo {
+        transform: translateZ(20px) scale(1.05);
+    }
+
+    .team-card-3d:hover .team-avatar-photo img {
+        box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.15),
+            0 16px 40px rgba(84, 117, 229, 0.25),
+            inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Enhanced text depth on hover */
+    .team-card-3d h3 {
+        transition: all 0.3s ease;
+    }
+
+    .team-card-3d:hover h3 {
+        transform: translateZ(10px);
+        color: var(--primary);
+    }
+
+    /* Subtle animation for credentials */
+    .team-card-3d .team-credentials {
+        transition: all 0.3s ease;
+    }
+
+    .team-card-3d:hover .team-credentials {
+        transform: translateZ(5px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+        .team-avatar-photo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .team-card-3d:hover {
+            transform: translateY(-8px) translateZ(10px);
+        }
+    }
+</style>
