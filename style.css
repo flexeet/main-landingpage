@@ -820,6 +820,8 @@ p {
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card.visible {
@@ -886,6 +888,7 @@ p {
 
 .product-body {
     padding: 24px 32px;
+    flex: 1;
 }
 
 .product-body p {
